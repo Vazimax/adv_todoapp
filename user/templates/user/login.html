@@ -1,0 +1,20 @@
+{% extends 'posts/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="center">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input class="btn btn-outline-success" type="submit">
+    </form>
+    <small class="text-muted">
+        Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+    </small>
+    <br>
+    <small class="text-muted">
+        Forget Password? <a class="ml-2" href="{% url 'password_reset' %}">Reset Password</a>
+    </small>
+</div>
+
+{% endblock %}

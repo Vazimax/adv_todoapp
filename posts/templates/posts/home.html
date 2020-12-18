@@ -1,0 +1,23 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+    <div class="center">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.task}}
+            <input class="btn btn-success" type="submit" value="Add Task">
+        </form>
+        <div class="todo-list">
+            {% for post in posts %}
+                <div class="item-row">
+                    <a class="btn btn-info" href="{% url 'update-post' post.id %}">Update</a>
+                    <a class="btn btn-danger" href="{% url 'delete-post' post.id %}">Delete</a>
+                    {% if post.completed %}
+                        <strike>{{post}}</strike>
+                    {% else %}
+                        <span>{{post}}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
